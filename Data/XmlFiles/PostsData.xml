@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<POSTS>
+  <POST>
+    <ID>1</ID>
+    <CATEGORY>CATEGORY 2</CATEGORY>
+    <TITLE>new Post 1</TITLE>
+    <PUBLICATIONDATE>2023-06-08</PUBLICATIONDATE>
+    <CONTENT>new content 1</CONTENT>
+  </POST>
+  <POST>
+    <ID>2</ID>
+    <CATEGORY>CATEGORY 1</CATEGORY>
+    <TITLE>post anterieur</TITLE>
+    <PUBLICATIONDATE>2023-06-01</PUBLICATIONDATE>
+    <CONTENT>a ete post avant aujourd&lt;hui</CONTENT>
+  </POST>
+  <POST>
+    <ID>3</ID>
+    <CATEGORY>CATEGORY 1</CATEGORY>
+    <TITLE>post ulterieur</TITLE>
+    <PUBLICATIONDATE>2023-07-08</PUBLICATIONDATE>
+    <CONTENT>a ete post/ plus tard</CONTENT>
+  </POST>
+  <POST>
+    <ID>4</ID>
+    <CATEGORY>CATEGORY 2</CATEGORY>
+    <TITLE>post du 4</TITLE>
+    <PUBLICATIONDATE>2023-06-04</PUBLICATIONDATE>
+    <CONTENT>ahahah</CONTENT>
+  </POST>
+  <POST>
+    <ID>5</ID>
+    <CATEGORY>CATEGORY 2</CATEGORY>
+    <TITLE>mer</TITLE>
+    <PUBLICATIONDATE>2023-03-28</PUBLICATIONDATE>
+    <CONTENT>ceci est du contenu</CONTENT>
+  </POST>
+</POSTS>

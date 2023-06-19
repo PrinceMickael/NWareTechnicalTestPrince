@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model dynamic
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" onclick="location.href='@Url.Action("Index", "Home")'">
+        <div class="container-fluid">
+            <a href="#" class="h2 mx-auto h2 mx-auto text-decoration-none link-dark">Blog - Edit Category</a>
+        </div>
+    </nav>
+
+    @if (true)
+    {
+        @Html.Partial("Bandeau");
+    }
+</header>
+
+<div class="form-group">  
+    <div>
+        <span class="h3">Categories</Span>
+        <input type="button" class="btn btn-primary align-baseline float-right" value="add" onclick="location.href='@Url.Action("CreateCategory", "Home")'" />
+    </div>
+
+    <ul class="list-group">
+        @foreach (var category in Model.Categories)
+        {
+            <input type="button" class="list-group-item list-group-item-action" value="@category.title" onclick="location.href='@Url.Action("UpdateCategory", "Home", new { pTitle = @category.title })'" />
+        }
+    </ul>
+</div>
+
+<div class="form-group mt-5 col-md-12">  
+    <div>
+        <span class="h3">Posts</Span>
+        <input type="button" class="btn btn-primary align-baseline float-right" value="add" onclick="location.href='@Url.Action("CreatePost", "Home")'" />
+    </div>
+
+    <div class="list-group">
+        @foreach (var post in Model.Posts)
+        {
+
+            <a href="@Url.Action("UpdatePost", "Home", new { pTitle = post.title })" class="list-group-item list-group-item-action flex-column align-items-start" >
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">@post.title</h5>
+                  <small>@post.publicationDate.ToString("dd/MM/yyyy")</small>
+                </div>
+                <p class="mb-1">@post.content</p>
+            </a>
+        }
+    </div>
+</div>

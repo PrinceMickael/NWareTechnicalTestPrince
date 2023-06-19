@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "CreateCategory";
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 " onclick="location.href='@Url.Action("Index", "Home")'">
+        <div class="container-fluid">
+            <a href="#" class="h2 mx-auto h2 mx-auto text-decoration-none link-dark">Blog - Add Category</a>
+        </div>
+    </nav>
+</header>
+
+<div class="form-group">
+    <div>
+        <h3>add Category</h3>
+    </div>
+
+    <form action="~/Crud/CreateCategory" method="POST">
+        <div>
+            <label>Title</label>
+            <input type="text" name="pTitle" required />
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Save" />
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "UpdateCategory";
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" onclick="location.href='@Url.Action("Index", "Home")'">
+        <div class="container-fluid cursor-pointer">
+            <a href="#" class="h2 mx-auto h2 mx-auto text-decoration-none link-dark">Blog - Edit Category</a>
+        </div>
+    </nav>
+</header>
+
+<div class="form-group">
+    <div>
+        <h3>Edit Category</h3>
+    </div>
+
+    <form action="~/Crud/UpdateCategory" method="POST"> 
+        <div>
+            <label>Title</label>
+            <input type="text" name="newTitle" placeholder="@ViewBag.oldTitle" required />
+            <input type="hidden" name="oldTitle" value="@ViewBag.oldTitle" />
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Save" />
+    </form>
+
+    <form action="~/Crud/DeleteCategory" method="POST">
+        <input type="hidden" name="oldTitle" value="@ViewBag.oldTitle"  />
+        <input type="submit" class="btn btn-danger" value="Delete" onclick="confirm('Are you sur ?')" />
+    </form>
+
+
+</div>

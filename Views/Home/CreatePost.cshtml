@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "CreatePost";
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 " onclick="location.href='@Url.Action("Index", "Home")'">
+        <div class="container-fluid">
+            <a href="#" class="h2 mx-auto h2 mx-auto text-decoration-none link-dark">Blog - Add Post</a>
+        </div>
+    </nav>
+</header>
+
+<div class="form-group">
+    <div>
+        <h3>add Post</h3>
+    </div>
+
+    <form action="~/Crud/CreatePost" method="POST">
+        <div>
+            <label>Title</label>
+            <input type="text" name="pTitle" required />
+        </div>
+        <div>
+            <label>Category</label>
+            <select name="pCategory" required>
+                <option value="">Select a category</option>
+                @foreach (var category in ViewBag.CategoryList)
+                {
+                    <option value="@category.title">@category.title</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Pub Date</label>
+            <input type="date" name="pDate" required />
+        </div>
+        <div>
+            <label>Content</label>
+            <textarea class="form-control" name="pcontent" rows="3" required></textarea>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Save" />
+    </form>
+</div>

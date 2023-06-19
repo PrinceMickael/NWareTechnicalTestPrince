@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Bandeau";
+}
+
+@model dynamic
+
+@{
+    switch (Model.CrudAction)
+    {
+        case "Create" :
+            <div class="alert alert-success" role="alert">
+                Create success
+            </div>
+            break;
+        case "Update":
+            <div class="alert alert-success" role="alert">
+                Update success
+            </div>
+            break;
+        case "Delete":
+            <div class="alert alert-success" role="alert">
+                Delete success
+            </div>
+            break;
+        case "Exist":
+            <div class="alert alert-warning" role="alert">
+                Title Already Exist
+            </div>
+            break;
+        case "Used":
+            <div class="alert alert-warning" role="alert">
+                Category is used in a post
+            </div>
+            break;
+        case "Error":
+            <div class="alert alert-danger" role="alert">
+                La page a rencontre ue erreur
+            </div>
+            break;
+    }
+}
+
+
+
