@@ -12,6 +12,7 @@ namespace WebApplication1.Models
             Delete,
             Exist,
             Used,
+            Empty,
             Error
         }
 

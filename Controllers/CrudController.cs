@@ -32,6 +32,11 @@ namespace BlogEngineNwareTechnologies.Controllers
                 title.InnerText = pTitle;
                 category.AppendChild(title);
 
+                if (pTitle == null) 
+                {
+                    return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
+                }
+
                 if (isCategoryValide(pTitle))
                 {
                     doc.Save(CategoryDataFile);
@@ -71,8 +76,12 @@ namespace BlogEngineNwareTechnologies.Controllers
         {
             try
             {
-                var doc = XDocument.Load(CategoryDataFile);
+                if (newTitle == null)
+                {
+                    return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
+                }
 
+                var doc = XDocument.Load(CategoryDataFile);
                 var target = doc.Root.Descendants("CATEGORY").FirstOrDefault(x => x.Element("TITLE").Value == oldTitle);
                 var title = target.Descendants("TITLE").FirstOrDefault();
                 title.Value = newTitle;
@@ -102,7 +111,6 @@ namespace BlogEngineNwareTechnologies.Controllers
                 if (CategoryIsNotUse(oldTitle))
                 {
                     root.RemoveChild(target);
-
                     doc.Save(CategoryDataFile);
                     return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Delete });
                 }
@@ -119,6 +127,11 @@ namespace BlogEngineNwareTechnologies.Controllers
         {
             try
             {
+                if (pTitle == null || pCategory == null || pDate == null || pContent == null)
+                {
+                    return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
+                }
+
                 XmlDocument doc = new XmlDocument();
                 doc.Load(PostsDataFile);
                 XmlNode root = doc.SelectSingleNode("POSTS");
@@ -144,6 +157,7 @@ namespace BlogEngineNwareTechnologies.Controllers
                 XmlElement content = doc.CreateElement("CONTENT");
                 content.InnerText = pContent;
                 post.AppendChild(content);
+
 
                 if (isPostValide(pTitle, pCategory, pDate, pContent))
                 {
@@ -198,6 +212,12 @@ namespace BlogEngineNwareTechnologies.Controllers
         {
             try
             {
+
+                if (newTitle == null || newCategory == null || newPublicationDate == null || newContent == null)
+                {
+                    return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
+                }
+
                 var doc = XDocument.Load(PostsDataFile);
 
                 var target = doc.Root.Descendants("POST").FirstOrDefault(x => x.Element("TITLE").Value == oldTitle);
@@ -248,9 +268,6 @@ namespace BlogEngineNwareTechnologies.Controllers
 
         private bool isCategoryValide(string pTitle)
         {
-            //si vide
-            if (string.IsNullOrEmpty(pTitle.Replace(" ",""))) return false;
-
             //si existe deja
             var xml = new XmlDocument();
             xml.Load(CategoryDataFile);

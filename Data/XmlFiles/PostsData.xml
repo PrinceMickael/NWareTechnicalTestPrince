@@ -10,9 +10,9 @@
   <POST>
     <ID>2</ID>
     <CATEGORY>CATEGORY 1</CATEGORY>
-    <TITLE>post anterieur</TITLE>
+    <TITLE>Post ancien</TITLE>
     <PUBLICATIONDATE>2023-06-01</PUBLICATIONDATE>
-    <CONTENT>a ete post avant aujourd&lt;hui</CONTENT>
+    <CONTENT>Posté avant aujourd'hui !</CONTENT>
   </POST>
   <POST>
     <ID>3</ID>
@@ -24,15 +24,8 @@
   <POST>
     <ID>4</ID>
     <CATEGORY>CATEGORY 2</CATEGORY>
-    <TITLE>post du 4</TITLE>
+    <TITLE>Post qui prouve rien</TITLE>
     <PUBLICATIONDATE>2023-06-04</PUBLICATIONDATE>
-    <CONTENT>ahahah</CONTENT>
-  </POST>
-  <POST>
-    <ID>5</ID>
-    <CATEGORY>CATEGORY 2</CATEGORY>
-    <TITLE>mer</TITLE>
-    <PUBLICATIONDATE>2023-03-28</PUBLICATIONDATE>
-    <CONTENT>ceci est du contenu</CONTENT>
+    <CONTENT>ceci est un post test</CONTENT>
   </POST>
 </POSTS>
