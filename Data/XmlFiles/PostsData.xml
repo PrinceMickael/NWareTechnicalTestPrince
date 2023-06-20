@@ -8,31 +8,17 @@
     <CONTENT>new content 1</CONTENT>
   </POST>
   <POST>
-    <ID>3</ID>
+    <ID>2</ID>
     <CATEGORYID>2</CATEGORYID>
     <TITLE>post ulterieur</TITLE>
     <PUBLICATIONDATE>2023-07-08</PUBLICATIONDATE>
     <CONTENT>Sera posté plus tard</CONTENT>
   </POST>
   <POST>
-    <ID>4</ID>
+    <ID>3</ID>
     <CATEGORYID>2</CATEGORYID>
     <TITLE>Post qui prouve rien</TITLE>
     <PUBLICATIONDATE>2023-06-04</PUBLICATIONDATE>
     <CONTENT>ceci est un post test</CONTENT>
-  </POST>
-  <POST>
-    <ID>5</ID>
-    <CATEGORYID>1</CATEGORYID>
-    <TITLE>Post ancien</TITLE>
-    <PUBLICATIONDATE>2023-06-06</PUBLICATIONDATE>
-    <CONTENT>toto test</CONTENT>
-  </POST>
-  <POST>
-    <ID>5</ID>
-    <CATEGORYID>1</CATEGORYID>
-    <TITLE>Post ancien</TITLE>
-    <PUBLICATIONDATE>2023-06-06</PUBLICATIONDATE>
-    <CONTENT>toto test</CONTENT>
   </POST>
 </POSTS>
