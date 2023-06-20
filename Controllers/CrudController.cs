@@ -123,11 +123,11 @@ namespace BlogEngineNwareTechnologies.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatePost(string pTitle, string pCategory, string pDate, string pContent)
+        public ActionResult CreatePost(string pTitle, string pCategoryName, string pDate, string pContent)
         {
             try
             {
-                if (pTitle == null || pCategory == null || pDate == null || pContent == null)
+                if (pTitle == null || pCategoryName == null || pDate == null || pContent == null)
                 {
                     return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
                 }
@@ -142,9 +142,10 @@ namespace BlogEngineNwareTechnologies.Controllers
                 id.InnerText = doc.SelectNodes("POSTS/POST").Count.ToString(); ;
                 post.AppendChild(id);
 
-                XmlElement category = doc.CreateElement("CATEGORY");
-                category.InnerText = pCategory;
-                post.AppendChild(category);
+                XmlElement categoryId = doc.CreateElement("CATEGORYID");
+                CategoryModel category = GetCategoryByName(pCategoryName);
+                categoryId.InnerText = category.Id.ToString();
+                post.AppendChild(categoryId);
 
                 XmlElement title = doc.CreateElement("TITLE");
                 title.InnerText = pTitle;
@@ -159,7 +160,7 @@ namespace BlogEngineNwareTechnologies.Controllers
                 post.AppendChild(content);
 
 
-                if (isPostValide(pTitle, pCategory, pDate, pContent))
+                if (isPostValide(pTitle, pCategoryName, pDate, pContent))
                 {
                     doc.Save(PostsDataFile);
                     return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Create });
@@ -195,7 +196,7 @@ namespace BlogEngineNwareTechnologies.Controllers
 
                     foreach (var category in listCategory)
                     {
-                         if (category.title == subNode["CATEGORY"].InnerText)
+                         if (category.Id.ToString() == subNode["CATEGORYID"].InnerText)
                          {
                             post.category = new CategoryModel { Id = category.Id ,title = category.title };
                          }
@@ -208,12 +209,12 @@ namespace BlogEngineNwareTechnologies.Controllers
             }
         }
 
-        public ActionResult UpdatePost(string oldTitle, string newTitle, string newCategory, string newPublicationDate, string newContent)
+        public ActionResult UpdatePost(string oldTitle, string newTitle, string newCategoryName, string newPublicationDate, string newContent)
         {
             try
             {
 
-                if (newTitle == null || newCategory == null || newPublicationDate == null || newContent == null)
+                if (newTitle == null || newCategoryName == null || newPublicationDate == null || newContent == null)
                 {
                     return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
                 }
@@ -222,11 +223,11 @@ namespace BlogEngineNwareTechnologies.Controllers
 
                 var target = doc.Root.Descendants("POST").FirstOrDefault(x => x.Element("TITLE").Value == oldTitle);
                 var title = target.Descendants("TITLE").FirstOrDefault();
-                var category = target.Descendants("CATEGORY").FirstOrDefault();
+                var categoryId = target.Descendants("CATEGORYID").FirstOrDefault();
                 var publicationDate = target.Descendants("PUBLICATIONDATE").FirstOrDefault();
                 var content = target.Descendants("CONTENT").FirstOrDefault();
                 title.Value = newTitle;
-                category.Value = newCategory;
+                categoryId.Value = GetCategoryByName(newCategoryName).Id.ToString();
                 publicationDate.Value = newPublicationDate;
                 content.Value = newContent;
 
@@ -297,6 +298,22 @@ namespace BlogEngineNwareTechnologies.Controllers
             }
 
             return true;
+        }
+
+        private CategoryModel GetCategoryByName(string CategoryTitle)
+        {
+            var categoryModel = new CategoryModel();
+            var categoryList = ReadCategory();
+            foreach (var category in categoryList)
+            {
+                if (category.title == CategoryTitle)
+                {
+                    categoryModel.Id = category.Id;
+                    categoryModel.title = category.title;
+                }
+            }
+
+            return categoryModel;
         }
 
     }

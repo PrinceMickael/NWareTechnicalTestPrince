@@ -62,7 +62,6 @@ namespace WebApplication1.Controllers
             //get category
             var crudController = new CrudController();
             var listPosts = crudController.ReadPost();
-            var toto = new DateTime();
 
             foreach (var post in listPosts)
             {
