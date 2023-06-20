@@ -8,13 +8,6 @@
     <CONTENT>new content 1</CONTENT>
   </POST>
   <POST>
-    <ID>2</ID>
-    <CATEGORYID>1</CATEGORYID>
-    <TITLE>Post ancien</TITLE>
-    <PUBLICATIONDATE>2023-06-01</PUBLICATIONDATE>
-    <CONTENT>Posté avant aujourd'hui !</CONTENT>
-  </POST>
-  <POST>
     <ID>3</ID>
     <CATEGORYID>2</CATEGORYID>
     <TITLE>post ulterieur</TITLE>
@@ -27,5 +20,19 @@
     <TITLE>Post qui prouve rien</TITLE>
     <PUBLICATIONDATE>2023-06-04</PUBLICATIONDATE>
     <CONTENT>ceci est un post test</CONTENT>
+  </POST>
+  <POST>
+    <ID>5</ID>
+    <CATEGORYID>1</CATEGORYID>
+    <TITLE>Post ancien</TITLE>
+    <PUBLICATIONDATE>2023-06-06</PUBLICATIONDATE>
+    <CONTENT>toto test</CONTENT>
+  </POST>
+  <POST>
+    <ID>5</ID>
+    <CATEGORYID>1</CATEGORYID>
+    <TITLE>Post ancien</TITLE>
+    <PUBLICATIONDATE>2023-06-06</PUBLICATIONDATE>
+    <CONTENT>toto test</CONTENT>
   </POST>
 </POSTS>

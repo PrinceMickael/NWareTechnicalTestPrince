@@ -160,8 +160,9 @@ namespace BlogEngineNwareTechnologies.Controllers
                 post.AppendChild(content);
 
 
-                if (isPostValide(pTitle, pCategoryName, pDate, pContent))
+                if (isPostValideTitle(pTitle) && isPostValideCategory(pCategoryName) && isPostValideDate(pDate) && isPostValideContent(pContent))
                 {
+
                     doc.Save(PostsDataFile);
                     return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Create });
                 }
@@ -217,6 +218,11 @@ namespace BlogEngineNwareTechnologies.Controllers
                 if (newTitle == null || newCategoryName == null || newPublicationDate == null || newContent == null)
                 {
                     return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Empty });
+                }
+
+                if (!isPostValideTitle(newTitle) || !isPostValideCategory(newCategoryName) || !isPostValideDate(newPublicationDate) || !isPostValideContent(newContent))
+                {
+                    return RedirectToAction("Index", "Home", new { crudAction = ECrudAction.Incorrect });
                 }
 
                 var doc = XDocument.Load(PostsDataFile);
@@ -281,9 +287,48 @@ namespace BlogEngineNwareTechnologies.Controllers
             return true;
         }
 
-        private bool isPostValide(string pTitle, string pCategory, string pDate, string pContent)
+        private bool isPostValideTitle(string pTitle)
         {
+            var xml = new XmlDocument();
+            xml.Load(PostsDataFile);
+            var postsList = ReadPost();
 
+            if (pTitle == null)
+            {
+                return false;
+            }
+            foreach (var post in postsList)
+            {
+                if (post.title == pTitle)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool isPostValideCategory(string categoryName)
+        {
+            var xml = new XmlDocument();
+            xml.Load(CategoryDataFile);
+            var categoryList = ReadCategory();
+
+            foreach (var category in categoryList)
+            {
+                if (category.title == categoryName) return false;
+            }
+
+            return true;
+        }
+        private bool isPostValideDate(string date)
+        {
+            if (string.IsNullOrEmpty(date)) { return false; }
+            return true;
+        }
+        private bool isPostValideContent(string content)
+        {
+            if (string.IsNullOrEmpty(content)) { return false; }
 
             return true;
         }

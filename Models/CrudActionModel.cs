@@ -13,6 +13,7 @@ namespace WebApplication1.Models
             Exist,
             Used,
             Empty,
+            Incorrect,
             Error
         }
 

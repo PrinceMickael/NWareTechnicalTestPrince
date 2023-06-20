@@ -19,7 +19,7 @@
     <form action="~/Crud/UpdatePost" method="POST">
         <div>
             <label>Title</label>
-            <input type="text" name="newTitle" value="@ViewBag.oldTitle" required />
+            <input type="text" name="newTitle" value="@ViewBag.oldTitle" required autofocus />
             <input type="hidden" name="oldTitle" value="@ViewBag.oldTitle" />
         </div>
         <div>
