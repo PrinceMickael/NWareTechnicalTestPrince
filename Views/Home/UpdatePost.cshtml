@@ -51,6 +51,16 @@
     </form>
     <form action="~/Crud/DeletePost" method="POST">
         <input type="hidden" name="oldTitle" value="@ViewBag.oldTitle" />
-        <input type="submit" class="btn btn-danger" value="Delete" onclick="confirm('Are you sure ?')" />
+        <input id="deleteButton" type="button" class="btn btn-danger" value="Delete" onclick="confirmDelete()" />
     </form>
+
+    <script>
+        function confirmDelete() {
+            if (confirm("Are you sure ?")) {
+                $("#deleteButton").attr("type", "submit");
+                $("#deleteButton").removeAttr("onclick");
+                $("#deleteButton").click();
+            }
+        }
+    </script>
 </div>
